@@ -194,3 +194,4 @@ configure_file(output : 'config.h', configuration : cdata)
 
 # Enter to each subdirectory and execute the meson.build
 subdir('gst-libs')
+subdir('ext')
