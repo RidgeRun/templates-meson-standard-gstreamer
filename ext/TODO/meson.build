@@ -9,10 +9,9 @@ gst_plugin_headers = [
 ]
 
 # Build plugin library
-gst_plugin = library('gstTODOplugin-@0@'.format(api_version),
+gst_plugin = library('gstTODOplugin',
   gst_plugin_sources,
   c_args : c_args,
-  version : api_version,
   include_directories : configinc,
   install : true,
   install_dir : plugins_install_dir,
