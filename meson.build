@@ -35,7 +35,7 @@ test_deps=[gst_dep, gst_base_dep, gst_check_dep]
 
 # Define header directories
 #libgstTODO_inc_dir = include_directories('libgstc')
-TODO_inc_dir = include_directories('gst-libs/gst/TODO')
+TODO_inc_dir = include_directories('gst-libs/')
 configinc = include_directories('.')
 
 # Define compiler args and include directories
