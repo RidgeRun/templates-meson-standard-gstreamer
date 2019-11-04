@@ -45,7 +45,7 @@ c_args = ['-DHAVE_CONFIG_H']
 
 lib_install_dir = get_option('libdir')
 plugins_install_dir = join_paths(get_option('libdir'), 'gstreamer-1.0')
-plugins_pkgconfig_install_dir = join_paths(plugins_install_dir, 'pkgconfig')
+plugins_pkgconfig_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
 # Internal installation directory
 plugin_dir = []

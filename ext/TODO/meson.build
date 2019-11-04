@@ -17,5 +17,3 @@ gst_plugin = library('gstTODOplugin',
   install_dir : plugins_install_dir,
   dependencies : [plugin_deps, gst_internal_dep] ,
 )
-
-pkgconfig.generate(gst_plugin, install_dir : plugins_pkgconfig_install_dir)
