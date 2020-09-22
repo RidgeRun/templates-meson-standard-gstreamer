@@ -33,6 +33,20 @@ example_deps = [gst_dep, gst_base_dep]
 # Define test dependencies
 test_deps=[gst_dep, gst_base_dep, gst_check_dep]
 
+# Verify if profiling was enabled
+if get_option('enable-profiling').enabled()
+  profiler_dep = dependency('libprofiler')
+  if(profiler_dep.found())
+    message('Profiling enabled: Building examples with profiling support.')
+    link_flags += ['-lprofiler']
+    c_flags += ['-DPROFILING']
+    # Update test test_deps to include profiler dependency
+    test_deps += [profiler_dep]
+  else
+    error('MESON_FAIL gperftools profiling library not found.')
+  endif
+endif
+
 # Define header directories
 #libgstTODO_inc_dir = include_directories('libgstc')
 TODO_inc_dir = include_directories('gst-libs/')
