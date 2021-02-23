@@ -1,7 +1,7 @@
-if not get_option('enable-tests').disabled() and gst_check_dep.found()
+if not get_option('tests').disabled() and gst_check_dep.found()
   subdir('check')
 endif
 
-if not get_option('enable-examples').disabled()
+if not get_option('examples').disabled()
   subdir('examples')
 endif

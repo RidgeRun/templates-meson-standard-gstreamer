@@ -34,7 +34,7 @@ example_deps = [gst_dep, gst_base_dep]
 test_deps=[gst_dep, gst_base_dep, gst_check_dep]
 
 # Verify if profiling was enabled
-if get_option('enable-profiling').enabled()
+if get_option('profiling').enabled()
   profiler_dep = dependency('libprofiler')
   if(profiler_dep.found())
     message('Profiling enabled: Building examples with profiling support.')
@@ -58,7 +58,7 @@ c_args = ['-DHAVE_CONFIG_H']
 # Define installation directories
 
 lib_install_dir = get_option('libdir')
-plugins_install_dir = join_paths(get_option('libdir'), 'gstreamer-1.0')
+plugins_install_dir = join_paths(lib_install_dir, 'gstreamer-1.0')
 plugins_pkgconfig_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
 # Internal installation directory
@@ -88,6 +88,13 @@ warning_flags = [
   '-Wdeclaration-after-statement',
   '-Wvla',
   '-Wpointer-arith',
+  '-Wuninitialized',
+  '-Wunknown-pragmas',
+  '-Wunused-function',
+  '-Wunused-label',
+  '-Wunused-value',
+  '-Wunused-variable',
+  '-Werror',
 ]
 foreach extra_arg : warning_flags
   if cc.has_argument (extra_arg)
