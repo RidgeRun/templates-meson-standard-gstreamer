@@ -61,6 +61,9 @@ lib_install_dir = get_option('libdir')
 plugins_install_dir = join_paths(lib_install_dir, 'gstreamer-1.0')
 plugins_pkgconfig_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
+libexecdir = get_option('libexecdir')
+helpers_install_dir = join_paths(libexecdir, 'gstreamer-1.0')
+
 # Internal installation directory
 plugin_dir = []
 
@@ -204,8 +207,15 @@ foreach h : check_headers
   endif
 endforeach
 
-# Gtk documentation
-gnome = import('gnome')
+# Documentation
+docs_enabled = get_option('docs') == 'enabled' or get_option('docs') == 'only'
+gst_doc_dep = [plugin_deps]
+plugins = []
+
+if get_option('docs') == 'only'
+  subdir('docs')
+  subdir_done()
+endif
 
 # Imports pkgconfig module
 pkgconfig = import('pkgconfig')
@@ -226,3 +236,9 @@ configure_file(output : 'config.h', configuration : cdata)
 subdir('gst-libs')
 subdir('ext')
 subdir('tests')
+
+# Hotdoc documentation
+if get_option('docs') == 'enabled'
+  gst_doc_dep += [gst_dep]
+  subdir('docs')
+endif
