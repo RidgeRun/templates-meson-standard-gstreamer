@@ -1,4 +1,5 @@
 # Feature options
+option('developer-mode', type : 'boolean', value : false, yield : true, description: 'Enable developer mode')
 option('tests', type : 'feature', value : 'auto', yield : true, description : 'Build tests')
 option('examples', type : 'feature', value : 'auto', yield : true, description : 'Build examples')
 option('gtk-doc', type : 'boolean', value : false, description : 'Use gtk-doc to build documentation')
